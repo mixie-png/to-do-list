@@ -1,0 +1,28 @@
+<h1>TODO List</h1>
+
+<p>A place to store your todos</p>
+<!-- filter -->
+<form>
+    <input placeholder="Filter your to-dos" type="text" class="filter" 
+    [(ngModel)]="filterTask" >
+</form>
+
+<!-- to-do List -->
+<ol>
+    <li [ngClass]="{completed: task.completed}" *ngFor="let task of tasks">
+       <div class="task">
+       <!-- *ngIf=task.task.includes(filterTask) -->
+           <button *ngIf= !task.completed class="complete-button" 
+           (click)=completeTask(task)>Complete</button>
+         {{ task.task }} 
+        </div>
+        <button class="removeButton" (click)="removeTask(task)">X</button >
+    </li>
+</ol>
+
+<!-- add task -->
+<form> 
+    <input name="task"  placeholder="Add your to-do" type="text"  [(ngModel)]="newTask">
+    <button class="addButton" (click)="addTask(newTask)">Add</button>
+</form>
+
